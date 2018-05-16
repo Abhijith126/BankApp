@@ -6,6 +6,23 @@
     <title>Bank Application</title>
 </head>
 <body>
-    <h1>Helllllloooooo</h1>
+    <h2 style="text-align: center">Banking App</h2>
+    <br>
+    <br>
+    <div style="text-align: center">
+        <form method="POST" action="services/login.py">
+            <label for="accountId">Account ID : </label>
+            <input type="text" name="accountId" placeholder="Account ID" required>
+            <br>
+            <br>
+            <label for="password">Password : </label>
+            <input type="password" name="password" placeholder="Password" required>
+            <br>
+            <br>
+            <input type="submit" value="Login">&nbsp;
+            <input type="button" value="Forgot Password" onclick="window.location='views/reset.html'">&nbsp;
+            <input type="button" value="Register Account" onclick="window.location='services/register.py'">
+        </form>
+    </div>
 </body>
 </html>
