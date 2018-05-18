@@ -16,3 +16,13 @@ class Account:
             return row[0]+1
         else:
             return 10000000001
+
+    def registerAcc(self, accNo, password, name, deposit):
+        query = "Insert into users values(%s,%s,%s,%s)"
+        args = (accNo, password, name, deposit)
+        cursor = self.db.cursor()
+        cursor.execute(query, args)
+        if cursor.lastrowid:
+            return 'last insert id' + cursor.lastrowid
+        else:
+            return 'last insert id not found'
