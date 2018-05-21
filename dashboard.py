@@ -5,11 +5,9 @@ from accountDb import Account
 
 acc = Account()
 form = cgi.FieldStorage()
-if form.getvalue("accountId") and form.getvalue("password"):
-    accountId = form.getvalue("accountId")
-    password = form.getvalue("password")
-    if(acc.validateAcc(accountId, password)):
-        print("Location:dashboard.py")
-    else:
-        print("Location:index.html?validated=False")
+print(template.printHead())
+if form.getvalue("accNo"):
+    accountId = form.getvalue("accNo")
+    print(accountId)
+
 print(template.printFoot())
