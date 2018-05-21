@@ -23,6 +23,6 @@ class Account:
         cursor = self.db.cursor()
         cursor.execute(query, args)
         if cursor.lastrowid:
-            return 'last insert id' + cursor.lastrowid
+            return 'last insert id' + str(cursor.lastrowid)
         else:
             return 'last insert id not found'

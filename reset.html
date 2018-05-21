@@ -9,6 +9,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bank Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
@@ -16,18 +17,14 @@
     <br>
     <br>
     <div style="text-align: center">
-        <form method="POST" action="login.py">
+        <form>
             <label for="accountId">Account ID : </label>
-            <input type="text" name="accountId" placeholder="Account ID" required>
+            <input type="text" name="accountId" placeholder="Account ID">
             <br>
             <br>
-            <label for="password">Password : </label>
-            <input type="password" name="password" placeholder="Password" required>
             <br>
             <br>
-            <input type="submit" value="Login">&nbsp;
-            <input type="button" value="Forgot Password" onclick="window.location='reset.html'">&nbsp;
-            <input type="button" value="Register Account" onclick="window.location='register.py'">
+            <input type="submit" value="Login"> &nbsp;&nbsp;
         </form>
     </div>
 </body>

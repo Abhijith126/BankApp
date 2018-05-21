@@ -2,16 +2,11 @@
 
 import cgi
 from accountDb import Account
+import template
 
 acc = Account()
-
-print("Content-type:text/html\r\n\r\n")
-print(""" 
-<html><head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bank Application</title>
-</head><body>
+print(template.printHead())
+print("""
     <h2 style="text-align: center">Banking App</h2>
     <br>
     <br>
@@ -37,6 +32,6 @@ print("""
             <input type="submit" value="Register New Account">&nbsp;
         </form>
     </div>
-</body>
-</html> """.format(accountId = acc.getAccountNo()))
+""".format(accountId=acc.getAccountNo()))
 
+print(template.printFoot())
