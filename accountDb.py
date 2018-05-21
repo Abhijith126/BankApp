@@ -26,3 +26,14 @@ class Account:
             return 'last insert id' + str(cursor.lastrowid)
         else:
             return 'last insert id not found'
+
+    def validateAcc(self, accNo, password):
+        query = "Select * from users where account_no = %s and password= %s"
+        args = (accNo, password)
+        cursor = self.db.cursor()
+        cursor.execute(query,args)
+        row = cursor.fetchone()
+        if row is not None:
+            return True
+        else:
+            return False

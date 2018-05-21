@@ -9,9 +9,18 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bank Application</title>
+
+    <script>
+        function checkError() {
+            if (location.search.split('validated=')[1] === 'False')
+                document.getElementById("errorMessage").hidden = false;
+            else
+                document.getElementById("errorMessage").hidden = true;
+        }
+    </script>
 </head>
 
-<body>
+<body onload="checkError()">
     <h2 style="text-align: center">Banking App</h2>
     <br>
     <br>
@@ -24,6 +33,9 @@
             <label for="password">Password : </label>
             <input type="password" name="password" placeholder="Password" required>
             <br>
+            <div id="errorMessage">
+                Invalid Account Id or password. Please try again
+            </div>
             <br>
             <input type="submit" value="Login">&nbsp;
             <input type="button" value="Forgot Password" onclick="window.location='reset.html'">&nbsp;
