@@ -4,6 +4,17 @@ import mysql.connector
 
 class Account:
 
+    accNo = ""
+    accName = ""
+    balance = 0
+    password = ""
+
+    def __init__(self, accNo, accName, password, balance):
+        self.accNo = accNo
+        self.accName = accName
+        self.password = password
+        self.balance = balance
+
     db = mysql.connector.connect(
         host="localhost", user="root", password="", database="bank_app")
 
@@ -28,12 +39,20 @@ class Account:
             return 'last insert id not found'
 
     def validateAcc(self, accNo, password):
-        query = "Select * from users where account_no = %s and password= %s"
+        query = "Select * from users where account_no= %s and password= %s"
         args = (accNo, password)
         cursor = self.db.cursor()
-        cursor.execute(query,args)
+        cursor.execute(query, args)
         row = cursor.fetchone()
         if row is not None:
             return True
         else:
             return False
+
+    def getAccDetails(self, accNo):
+        query = "Select * from users where account_no="+accNo
+        cursor = self.db.cursor()
+        cursor.execute(query)
+        row = cursor.fetchone()
+        if row is not None:
+            return Account(row[0], row[1], row[2], row[3])
