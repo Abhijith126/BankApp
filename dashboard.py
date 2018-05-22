@@ -6,8 +6,9 @@ from accountDb import Account
 acc = Account()
 form = cgi.FieldStorage()
 print(template.printHead())
+print (template.printMenuBar())
 if form.getvalue("accNo"):
     accountId = form.getvalue("accNo")
-    print(accountId)
+    
 
 print(template.printFoot())

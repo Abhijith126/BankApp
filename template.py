@@ -10,10 +10,43 @@ def printHead():
     <title>Bank Application</title>
     </head>
     <body>
+    <div class="container">
+    <br>
+    <h2 style="text-align: center">Banking App</h2>
+    <br>
     """
 
 
 def printFoot():
     return """
+    </div>
     </body></html>
+    """
+
+
+def printMenuBar():
+    return """
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ml-auto">
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="addPayee.py">Add Payee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="removePayee.py">Remove Payee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="transfer.py">Money Transfer</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a href="index.html" class="btn btn-danger" role="button" aria-pressed="false">Logout</a>
+        </li>
+    </ul>
+    </div>
+    </nav>
     """
