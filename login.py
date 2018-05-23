@@ -3,7 +3,7 @@ import cgi
 import template
 from accountDb import Account
 
-acc = Account()
+acc = Account("", "", "", 0)
 form = cgi.FieldStorage()
 if form.getvalue("accountId") and form.getvalue("password"):
     accountId = form.getvalue("accountId")

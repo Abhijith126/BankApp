@@ -33,13 +33,13 @@ def printMenuBar():
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="addPayee.py/{accId}">Add Payee</a>
+        <a class="nav-link" href="addPayee.py?accNo={accId}">Add Payee</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="removePayee.py/{accId}">Remove Payee</a>
+        <a class="nav-link" href="removePayee.py?accNo={accId}">Remove Payee</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="transfer.py/{accId}">Money Transfer</a>
+        <a class="nav-link" href="transfer.py?accNo={accId}">Money Transfer</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
