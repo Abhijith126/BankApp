@@ -8,15 +8,14 @@ class Account:
     accName = ""
     balance = 0
     password = ""
+    db = mysql.connector.connect(
+        host="localhost", user="root", password="", database="bank_app")
 
     def __init__(self, accNo, accName, password, balance):
         self.accNo = accNo
         self.accName = accName
         self.password = password
         self.balance = balance
-
-    db = mysql.connector.connect(
-        host="localhost", user="root", password="", database="bank_app")
 
     def getAccountNo(self):
         query = "Select max(account_no) from users"
