@@ -1,17 +1,29 @@
 #! C:\Python36\python
 import cgi
 import template
-from accountDb import Account
+from payeeDB import Payee
+
+payee = Payee(0, "", "", "")
+form = cgi.FieldStorage()
+
 
 def addPayee():
-    print("add")
+    print(template.printMenuBar().format(accId=form.getvalue("accountID")))
+    accId = form.getvalue("accountID")
+    accName = form.getvalue("payeeName")
+    payeeBank = form.getvalue("payeeBank")
+    payeeAccNO = form.getvalue("payeeNumber")
+    print(payee.addPayee(accId, payeeAccNO, accName, payeeBank))
+
 
 def removePayee():
-    print("remove")
+    print(template.printMenuBar().format(accId=form.getvalue("accountID")))
+    id = form.getvalue("payeeID")
+    print(payee.deletePayee(id))
+
 
 print(template.printHead())
-acc = Account("", "", "", 0)
-form = cgi.FieldStorage()
+
 if form.getvalue("operation") == "add":
     addPayee()
 if form.getvalue("operation") == "del":

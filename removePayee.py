@@ -12,30 +12,42 @@ form = cgi.FieldStorage()
 if form.getvalue("accNo"):
     accountId = form.getvalue("accNo")
     acc = acc.getAccDetails(accountId)
+    payeeList = payee.getAllPayee(accountId)
     print(template.printMenuBar().format(accId=accountId))
-    print("""
-    <br>
-    <form method="post" action="payeeService.py">
-    <div class="form-group">
-    <label for="payeeNumber">Payee Account Number</label>
-    <input type="text" class="form-control" name="payeeNumber" placeholder="1XXXXXXXXX" required>
-    </div>
-    <div class="form-group">
-    <label for="payeeName">Payee Account Name</label>
-    <input type="text" class="form-control" name="payeeName" placeholder="Amith Shah" required>
-    </div>
-    <div class="form-group">
-    <label for="payeeBank">Payee Account Bank</label>
-    <input type="text" class="form-control" name="payeeBank" placeholder="ICICI Bank" required>
-    <br>
-    <div class="text-center">
-    <input type="hidden" value="del" name="operation" >
-    <input class="btn btn-primary btn-lg" type="submit" value="Add Payee">
-    </div>
-    </div>
-    </form>
+    print("""<br>
+        <p>Below are the list of Payee added to your account. 
+        Feel free to delete them when ever you want.</p>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Payee Account No</th>
+                <th scope="col">Payee Account Name</th>
+                <th scope="col">Payee Account Bank</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
     """)
-    print(payee.getAllPayee(10000000))
+    if len(payeeList) == 0:
+        print("<tr><td colspan=5><p style='text-align:center;'> <b>No records found</b></p></td></tr>")
+    else:
+        for idx, payee in enumerate(payeeList):
+            print("""
+            <tr>
+                <th scope="row">{rowId}</th>
+                <td>{accNo}</td>
+                <td>{name}</td>
+                <td>{bank}</td>
+                <td><form method="post" action="payeeService.py">
+                    <input type="hidden" name="operation" value="del" >
+                    <input type="hidden" name="payeeID" value="{id}" >
+                    <input type="hidden" name="accountID" value="{accID}" >                    
+                    <input class="btn btn-warning" type="submit" value="Delete Payee"></form>
+                </td>
+            </tr>
+            """.format(rowId=idx+1, id=payee[0], accNo=payee[2], name=payee[3], bank=payee[4], accID=accountId))
+    print("</tbody></table>")
 
 
 print(template.printFoot())

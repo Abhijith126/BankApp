@@ -19,7 +19,7 @@ if form.getvalue("accNo"):
     </div>
     <div class="form-group">
     <label for="payeeName">Payee Account Name</label>
-    <input type="text" class="form-control" name="payeeName" placeholder="Amith Shah" required>
+    <input type="text" class="form-control" name="payeeName" placeholder="Jane Doe" required>
     </div>
     <div class="form-group">
     <label for="payeeBank">Payee Account Bank</label>
@@ -27,10 +27,11 @@ if form.getvalue("accNo"):
     <br>
     <div class="text-center">
     <input type="hidden" value="add" name="operation" >
+    <input type="hidden" value="{accID}" name="accountID">
     <input class="btn btn-primary btn-lg" type="submit" value="Add Payee">
     </div>
     </div>
     </form>
-    """)
+    """.format(accID=accountId))
 
 print(template.printFoot())

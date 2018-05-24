@@ -22,16 +22,25 @@ class Payee:
         query = "Select * from payee where account_no=" + str(accNo)
         cursor = self.db.cursor()
         cursor.execute(query)
-        row = cursor.fetchone()
-        print("working")
-        payeeList = []
-        while row is not None:
-            print(row)
-            payee = Payee(0, "", "", "")
-            payee.id = row[0]
-            payee.accNo = row[1]
-            payee.payee_name = row[2]
-            payee.bank_name = row[3]
-            payeeList.append(payee)
-            row = cursor.fetchone()
-        return payeeList
+        return list(cursor.fetchall())
+
+    def deletePayee(self, payeeID):
+        query = "DELETE FROM payee WHERE id =" + payeeID
+        cursor = self.db.cursor()
+        cursor.execute(query)
+        self.db.commit()
+        return """ <br><br>
+        <div class="alert alert-danger" role="alert">
+        Well, you just deleted the details of a payee. I hope you are happy now. :(
+        </div>"""
+
+    def addPayee(self, accNo, payeeAccNo, payeeName, payeeBank):
+        query = "INSERT INTO payee VALUES(0,%s,%s,%s,%s)"
+        cursor = self.db.cursor()
+        args = (accNo, payeeAccNo, payeeName, payeeBank)
+        cursor.execute(query, args)
+        self.db.commit()
+        return """ <br><br>
+        <div class="alert alert-success" role="alert">
+           The Payee with Acc No: {accID} is added to your Account Number: {accNo}
+        </div>""".format(accID=payeeAccNo, accNo=accNo)
