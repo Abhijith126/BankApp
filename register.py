@@ -4,14 +4,14 @@ import cgi
 from accountDb import Account
 import template
 
-acc = Account()
+acc = Account(0, "", "", "")
 print(template.printHead())
 print("""
     <h2 style="text-align: center">Banking App</h2>
     <br>
     <br>
     <div style="text-align: center;">
-        <form method="GET" action="addAccount.py">
+        <form method="POST" action="addAccount.py">
         <table align='center'>
         <tr><td>
             <label for="accountId">Account ID : </label></td><td>

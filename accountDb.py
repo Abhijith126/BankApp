@@ -25,17 +25,20 @@ class Account:
         if row[0] is not None:
             return row[0]+1
         else:
-            return 10000000001
+            return 1000001
 
     def registerAcc(self, accNo, password, name, deposit):
         query = "Insert into users values(%s,%s,%s,%s)"
         args = (accNo, password, name, deposit)
         cursor = self.db.cursor()
         cursor.execute(query, args)
-        if cursor.lastrowid:
-            return 'last insert id' + str(cursor.lastrowid)
-        else:
-            return 'last insert id not found'
+        self.db.commit()
+        cursor.close()
+        return """<br><br>
+        <div class="alert alert-primary" role="alert">
+        Yayyy!! Celebrate. Your account has been created. Please <a href="index.html" class="alert-link">Login</a> to access the bank
+        </div>
+        """
 
     def validateAcc(self, accNo, password):
         query = "Select * from users where account_no= %s and password= %s"
