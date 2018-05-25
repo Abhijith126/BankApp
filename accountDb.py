@@ -27,9 +27,9 @@ class Account:
         else:
             return 1000000
 
-    def registerAcc(self, accNo, password, name, deposit):
+    def registerAcc(self, accNo, name, password, deposit):
         query = "Insert into users values(%s,%s,%s,%s)"
-        args = (accNo, password, name, deposit)
+        args = (accNo, name, password, deposit)
         cursor = self.db.cursor()
         cursor.execute(query, args)
         self.db.commit()

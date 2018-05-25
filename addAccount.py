@@ -12,9 +12,9 @@ form = cgi.FieldStorage()
 if form.getvalue("accountId") and form.getvalue("password") and form.getvalue("accName") and form.getvalue("deposit"):
     accountId = str(form.getvalue("accountId"))
     password = str(form.getvalue("password"))
-    name = str(form.getvalue("name"))
+    name = str(form.getvalue("accName"))
     deposit = str(form.getvalue("deposit"))
-    print(acc.registerAcc(accountId, password, name, deposit))
+    print(acc.registerAcc(accountId, name, password, deposit))
     print("""
     """)
 
