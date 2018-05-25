@@ -58,3 +58,17 @@ class Account:
         row = cursor.fetchone()
         if row is not None:
             return Account(row[0], row[1], row[2], row[3])
+
+    def depositMoney(self, accNo, amount):
+        query = "UPDATE users  SET balance= balance+ %s where account_no = %s"
+        args = (amount, accNo)
+        cursor = self.db.cursor()
+        cursor.execute(query, args)
+        self.db.commit()
+        cursor.close()
+        return """<br><br>
+        <div class="alert alert-primary" role="alert">
+        Yayyy!! Celebrate. Your account has been debited with <b> {amt} Rupees</b>. Please visit <a href="dashboard.py?accNo={accNo}" class="alert-link">Home page</a>
+         to check the account details.
+        </div>
+        """.format(amt=amount, accNo=accNo)

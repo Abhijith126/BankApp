@@ -1,14 +1,36 @@
 #! C:\Python36\python
-import mysql.connector
+import cgi
+import template
+from transferDB import Transfer
+from accountDb import Account
+
+transaction = Transfer(0, 0, 0, "", 0)
+acc = Account(0, "", "", "")
+form = cgi.FieldStorage()
+print(template.printHead())
 
 
-db = mysql.connector.connect(host="localhost",user="root",password="",database="bank_app" )
-cursor = db.cursor()
-cursor.execute("SELECT VERSION()")
+def doDeposit():
+    if form.getvalue("accountID"):
+        print(template.printMenuBar().format(accId=form.getvalue("accountID")))
+        accId = form.getvalue("accountID")
+        amount = form.getvalue("amount")
+        print(acc.depositMoney(accId, amount))
 
-# Fetch a single row using fetchone() method.
-data = cursor.fetchone()
-print ("Database version : %s " % data)
 
-# disconnect from server
-db.close()
+def doTransaction():
+    if form.getvalue("accountID"):
+        print(template.printMenuBar().format(accId=form.getvalue("accountID")))
+        accId = form.getvalue("accountID")
+        amount = form.getvalue("payeeAmount")
+        payeeBank = form.getvalue("payeeBank")
+        payeeAccNO = form.getvalue("payeeNumber")
+        print(transaction.addTransaction(accId, payeeAccNO, payeeBank, amount))
+
+
+if form.getvalue("operation") == "transfer":
+    doTransaction()
+if form.getvalue("operation") == "deposit":
+    doDeposit()
+
+print(template.printFoot())

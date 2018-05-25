@@ -14,7 +14,7 @@ if form.getvalue("accNo"):
     <p> Feel free to transfer any amount without the fear of transaction charges. 
     It absolotely free!!!. Provided you have cash in your account. :) </p>
     <br>
-    <form method="post" action="payeeService.py">
+    <form method="post" action="service.py">
     <div class="form-group">
     <label for="payeeNumber">Payee Account Number</label>
     <input type="text" class="form-control" name="payeeNumber" placeholder="1XXXXXXXXX" required>
@@ -25,11 +25,12 @@ if form.getvalue("accNo"):
     </div>
     <div class="form-group">
     <label for="payeeAmount">Amount in Rs</label>
-    <input type="number" class="form-control" name="payeeAmount" placeholder="1000" required>
+    <input type="number" class="form-control" name="payeeAmount" placeholder="1000 Rs" required>
     <br>
     <div class="text-center">
     <input type="hidden" value="add" name="operation" >
     <input type="hidden" value="{accID}" name="accountID">
+    <input type="hidden" value="transfer" name="operation">
     <input class="btn btn-primary btn-lg" type="submit" value="Transfer">
     </div>
     </div>

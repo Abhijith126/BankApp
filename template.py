@@ -41,6 +41,9 @@ def printMenuBar():
       <li class="nav-item">
         <a class="nav-link" href="transfer.py?accNo={accId}">Money Transfer</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="deposit.py?accNo={accId}">Deposit Money</a>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
