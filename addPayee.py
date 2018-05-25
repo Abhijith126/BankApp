@@ -12,7 +12,8 @@ if form.getvalue("accNo"):
     <form method="post" action="payeeService.py">
     <div class="form-group">
     <label for="payeeNumber">Payee Account Number</label>
-    <input type="text" class="form-control" name="payeeNumber" placeholder="1XXXXXXXXX" required>
+    <input type="text" class="form-control" name="payeeNumber" placeholder="1XXXXXXXX" pattern="[0-9]*" 
+    title="Only Digits, not text" maxlength="11"  required>
     </div>
     <div class="form-group">
     <label for="payeeName">Payee Account Name</label>

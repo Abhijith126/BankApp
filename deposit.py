@@ -16,12 +16,12 @@ if form.getvalue("accNo"):
     <form method="post" action="service.py">
     <div class="form-group">
     <label for="amount">Amount in Rs</label>
-    <input type="number" class="form-control" name="amount" placeholder="1000 Rs" required>
+    <input type="number" class="form-control" name="amount" placeholder="1000 Rs" min=0 max=999999 step=0.1 required>
     <br>
     <div class="text-center">
     <input type="hidden" value="deposit" name="operation">
     <input type="hidden" value="{accID}" name="accountID">
-    <input class="btn btn-primary btn-lg" type="submit" value="Transfer">
+    <input class="btn btn-success btn-lg" type="submit" value="Deposit">
     </div>
     </div>
     </form>

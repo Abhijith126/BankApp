@@ -24,7 +24,8 @@
                     <tr>
                         <th scope="row">Account No:</th>
                         <td>
-                            <input type="text" class="form-control" maxlength="13" name="accNo" placeholder="1XXXXXXX" required>
+                            <input type="text" class="form-control" pattern="[0-9]*" title="Only Digits, not text" maxlength="11" name="accNo" placeholder="1XXXXXXX"
+                                required>
                         </td>
                     </tr>
                     <tr>

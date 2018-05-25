@@ -32,13 +32,14 @@
                     <tr>
                         <th scope="row">Account No:</th>
                         <td>
-                            <input type="number" class="form-control" maxlength="13" name="accountId" placeholder="1XXXXXXX" required>
+                            <input type="text" class="form-control" maxlength="11" name="accountId" placeholder="1XXXXXXX" pattern="[0-9]*" title="Only Digits, not text"
+                                required>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">Pasword:</th>
                         <td>
-                            <input type="password" class="form-control" maxlength="13" name="password" placeholder="New password" required>
+                            <input type="password" class="form-control" maxlength="20" name="password" placeholder="Password" required>
                         </td>
                     </tr>
                 </tbody>

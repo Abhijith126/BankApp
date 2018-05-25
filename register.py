@@ -21,7 +21,7 @@ print("""
             <input type="text" class="form-control" name="accName" placeholder="Name" required>
             </td></tr><tr><td>
             <label for="deposit">Initial Deposit : </label></td><td>
-            <input type="number" class="form-control" name="deposit" placeholder="Initial Deposit" required>
+            <input type="number" class="form-control" name="deposit" min=1 step=0.1 placeholder="Initial Deposit" required>
             </td></tr>
             </table>
             <br>
