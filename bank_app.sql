@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 25, 2018 at 02:52 AM
--- Server version: 5.7.21
--- PHP Version: 5.6.35
+-- Generation Time: May 25, 2018 at 12:19 PM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS `payee` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `account_no` int(13) NOT NULL,
   `payee_acc_no` int(13) NOT NULL,
-  `payee_name` varchar(50) NOT NULL,
-  `payee_bank` varchar(50) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `bank_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `account_no` (`account_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -47,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `payee` (
 
 DROP TABLE IF EXISTS `transfers`;
 CREATE TABLE IF NOT EXISTS `transfers` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `account_no` int(13) NOT NULL,
-  `payee_acc_no` int(13) NOT NULL,
-  `payee_bank` varchar(20) NOT NULL,
-  `transfer_amt` float NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_acc_no` int(11) NOT NULL,
+  `to_acc_no` int(11) NOT NULL,
+  `bank_name` varchar(50) NOT NULL,
+  `amount` float NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `account_no` (`account_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `from_acc_no` (`from_acc_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -64,23 +64,12 @@ CREATE TABLE IF NOT EXISTS `transfers` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `account_no` int(10) NOT NULL AUTO_INCREMENT,
+  `account_no` int(13) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `balance` float NOT NULL,
   PRIMARY KEY (`account_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=1234567891 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`account_no`, `name`, `password`, `balance`) VALUES
-(1000001, 'dasqew', 'None', 12),
-(1000002, 'admin', 'None', 12312),
-(1000003, 'admin', 'None', 2),
-(1000004, '12edas', 'None', 324),
-(1000005, 'dasqew', 'None', 45);
+) ENGINE=InnoDB AUTO_INCREMENT=100002136 DEFAULT CHARSET=latin1;
 
 --
 -- Constraints for dumped tables
@@ -96,7 +85,7 @@ ALTER TABLE `payee`
 -- Constraints for table `transfers`
 --
 ALTER TABLE `transfers`
-  ADD CONSTRAINT `transfers_ibfk_1` FOREIGN KEY (`account_no`) REFERENCES `users` (`account_no`);
+  ADD CONSTRAINT `transfers_ibfk_1` FOREIGN KEY (`from_acc_no`) REFERENCES `users` (`account_no`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
