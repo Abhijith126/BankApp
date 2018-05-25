@@ -28,7 +28,6 @@ if form.getvalue("accNo"):
     <input type="number" class="form-control" name="payeeAmount" placeholder="1000 Rs" required>
     <br>
     <div class="text-center">
-    <input type="hidden" value="add" name="operation" >
     <input type="hidden" value="{accID}" name="accountID">
     <input type="hidden" value="transfer" name="operation">
     <input class="btn btn-primary btn-lg" type="submit" value="Transfer">

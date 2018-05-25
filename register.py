@@ -7,29 +7,25 @@ import template
 acc = Account(0, "", "", "")
 print(template.printHead())
 print("""
-    <h2 style="text-align: center">Banking App</h2>
-    <br>
-    <br>
     <div style="text-align: center;">
         <form method="POST" action="addAccount.py">
-        <table align='center'>
+        <table class="table w-50  table-borderless" align='center'>
         <tr><td>
             <label for="accountId">Account ID : </label></td><td>
-            <input type="text" name="accountId" placeholder="Account ID" value="{accountId}" readonly>
+            <input type="text" class="form-control" name="accountId" placeholder="Account ID" value="{accountId}" readonly>
             </td></tr><tr><td>
             <label for="password">Password : </label></td><td>
-            <input type="text" name="password" placeholder="Password" required>
+            <input type="text" class="form-control" name="password" placeholder="Password" required>
             </td></tr><tr><td>
             <label for="accName">Name : </label></td><td>
-            <input type="text" name="accName" placeholder="Name" required>
+            <input type="text" class="form-control" name="accName" placeholder="Name" required>
             </td></tr><tr><td>
             <label for="deposit">Initial Deposit : </label></td><td>
-            <input type="number" name="deposit" placeholder="Initial Deposit" required>
+            <input type="number" class="form-control" name="deposit" placeholder="Initial Deposit" required>
             </td></tr>
             </table>
             <br>
-            <br>
-            <input type="submit" value="Register New Account">&nbsp;
+            <input class="btn btn-success" type="submit" value="Register New Account">&nbsp;
         </form>
     </div>
 """.format(accountId=acc.getAccountNo()))

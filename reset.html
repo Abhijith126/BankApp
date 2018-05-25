@@ -13,18 +13,37 @@
 </head>
 
 <body>
-    <h2 style="text-align: center">Banking App</h2>
-    <br>
-    <br>
-    <div style="text-align: center">
-        <form>
-            <label for="accountId">Account ID : </label>
-            <input type="text" name="accountId" placeholder="Account ID">
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="submit" value="Login"> &nbsp;&nbsp;
+    <div class="container">
+        <br>
+        <h2 style="text-align: center">Banking App</h2>
+        <br>
+        <br>
+        <form method="POST" action="forgotPass.py">
+            <table class="table w-50 table-borderless" align=center>
+                <tbody>
+                    <tr>
+                        <th scope="row">Account No:</th>
+                        <td>
+                            <input type="text" class="form-control" maxlength="13" name="accNo" placeholder="1XXXXXXX" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">New Pasword:</th>
+                        <td>
+                            <input type="password" class="form-control" maxlength="13" name="pass" placeholder="New password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Confirm New Password:</th>
+                        <td>
+                            <input type="password" class="form-control" maxlength="13" name="conPass" placeholder="Repeat new password." required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="text-align: center;">
+                <input class="btn btn-primary" type="submit" value="Reset Password">
+            </div>
         </form>
     </div>
 </body>

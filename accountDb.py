@@ -25,7 +25,7 @@ class Account:
         if row[0] is not None:
             return row[0]+1
         else:
-            return 1000001
+            return 1000000
 
     def registerAcc(self, accNo, password, name, deposit):
         query = "Insert into users values(%s,%s,%s,%s)"
@@ -68,7 +68,35 @@ class Account:
         cursor.close()
         return """<br><br>
         <div class="alert alert-primary" role="alert">
-        Yayyy!! Celebrate. Your account has been debited with <b> {amt} Rupees</b>. Please visit <a href="dashboard.py?accNo={accNo}" class="alert-link">Home page</a>
+        Yayyy!! Celebrate. Your account has been credited with <b> {amt} Rupees</b>. Please visit <a href="dashboard.py?accNo={accNo}" class="alert-link">Home page</a>
          to check the account details.
         </div>
         """.format(amt=amount, accNo=accNo)
+
+    def debitAmt(self, accNo, amount):
+        query = "UPDATE users  SET balance= balance- %s where account_no = %s"
+        args = (amount, accNo)
+        cursor = self.db.cursor()
+        cursor.execute(query, args)
+        self.db.commit()
+        cursor.close()
+        return """<br>
+        <div class="alert alert-primary" role="alert">
+        Your account has been debited with <b> {amt} Rupees</b>. Please visit <a href="dashboard.py?accNo={accNo}" class="alert-link">Home page</a>
+        to check the account details.
+        </div>
+        """.format(amt=amount, accNo=accNo)
+
+    def updatePass(self, accNo, password):
+        query = "UPDATE users  SET password= %s where account_no = %s"
+        args = (password, accNo)
+        cursor = self.db.cursor()
+        cursor.execute(query, args)
+        self.db.commit()
+        cursor.close()
+        return """<br>
+        <div class="alert alert-primary" role="alert">
+        Your account password is changed and the password is : <b> {password}</b>. Please <a href="index.html" class="alert-link">Login</a> to access the bank
+        to check the account details.
+        </div>
+        """.format(password=password)

@@ -27,20 +27,31 @@
     <br>
     <div style="text-align: center">
         <form method="POST" action="login.py">
-            <label for="accountId">Account ID : </label>
-            <input type="text" name="accountId" placeholder="Account ID" required>
-            <br>
-            <br>
-            <label for="password">Password : </label>
-            <input type="password" name="password" placeholder="Password" required>
-            <br>
-            <div id="errorMessage">
-                Invalid Account Id or password. Please try again
+            <table class="table w-25 table-borderless" align=center>
+                <tbody>
+                    <tr>
+                        <th scope="row">Account No:</th>
+                        <td>
+                            <input type="number" class="form-control" maxlength="13" name="accountId" placeholder="1XXXXXXX" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Pasword:</th>
+                        <td>
+                            <input type="password" class="form-control" maxlength="13" name="password" placeholder="New password" required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="errorMessage" style="width:800px; margin:0 auto;" class="alert alert-danger w-50" role="alert">
+                Invalid Account Id or password. Please try again :(
             </div>
             <br>
-            <input type="submit" value="Login">&nbsp;
-            <input type="button" value="Forgot Password" onclick="window.location='reset.html'">&nbsp;
-            <input type="button" value="Register Account" onclick="window.location='register.py'">
+            <div style="text-align: center;">
+                <input class="btn btn-success" type="submit" value="Login">
+                <input class="btn btn-primary" type="button" value="Forgot Password" onclick="window.location='reset.html'">&nbsp;
+                <input class="btn btn-warning" type="button" value="Register Account" onclick="window.location='register.py'">
+            </div>
         </form>
     </div>
 </body>

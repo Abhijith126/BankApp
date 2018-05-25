@@ -26,6 +26,7 @@ def doTransaction():
         payeeBank = form.getvalue("payeeBank")
         payeeAccNO = form.getvalue("payeeNumber")
         print(transaction.addTransaction(accId, payeeAccNO, payeeBank, amount))
+        print(acc.debitAmt(accId, amount))
 
 
 if form.getvalue("operation") == "transfer":
