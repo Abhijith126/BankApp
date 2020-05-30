@@ -11,7 +11,3 @@ This is a basic CGI project implemeted using Python 3.6 with bootstrap for UI.
 1) create database named `bank_app` 
 2) Import the file `bank_app.sql`
 3) install mysql.connector `pip install mysql-connector`
-
-#For any queries contact 
-Abhijith P
-Email : 1rg11cs001@gmail.com [not personal -.-] but i do check it 
